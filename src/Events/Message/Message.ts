@@ -17,5 +17,20 @@ export default class MessageEvent extends BaseEvent {
 		const prefix = result?.prefix || '?';
 
 		console.log(prefix);
+
+		if (message.content.startsWith(prefix)) {
+			const [cmdName, ...cmdArgs] = message.content
+				.slice(prefix.lengh)
+				.trim()
+				.split(/\s+/);
+
+			const command =
+				client.commands.get(cmdName.toLowerCase()) ||
+				client.commands.get(client.aliases.get(cmdName.toLowerCase()));
+
+			if (command) {
+				command.run(client, message, cmdArgs);
+			}
+		}
 	}
 }
