@@ -24,11 +24,14 @@ export default class MessageEvent extends BaseEvent {
 				.trim()
 				.split(/\s+/);
 
+			console.log(cmdName);
+			console.log(cmdArgs);
+
 			const command =
 				client.commands.get(cmdName.toLowerCase()) ||
 				client.commands.get(client.aliases.get(cmdName.toLowerCase()));
 
-			console.log(client.commands);
+			console.log(command);
 
 			if (command) {
 				console.log(command);
