@@ -6,6 +6,7 @@ export default async function initiateConnection() {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
 		});
+		console.log('Logged into the DB');
 		return con;
 	} catch (error) {
 		console.log(error);
