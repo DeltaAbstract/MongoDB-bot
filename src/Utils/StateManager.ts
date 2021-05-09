@@ -6,12 +6,12 @@ class StateManager extends EventEmitter {
 	db: Db;
 	constructor(opts?: object) {
 		super(opts);
-		connection()
-			.then((c) => {
-				this.db = c.db();
-			})
-			.catch((err) => console.log(err));
+	}
+	async getConnection() {
+		const client = await connection();
+		this.db = client.db();
+		return this;
 	}
 }
 
-export = StateManager;
+export = new StateManager();

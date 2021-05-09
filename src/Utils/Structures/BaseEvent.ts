@@ -3,7 +3,7 @@ import StateManger from '../StateManager';
 
 export default abstract class BaseEvent {
 	// Misc props
-	db = new StateManger().db;
+	db = StateManger.db;
 	constructor(private name: string) {}
 
 	getName(): string {
