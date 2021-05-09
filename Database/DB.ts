@@ -1,21 +1,12 @@
 import { MongoClient } from 'mongodb';
 
-export default function initiateConnection() {
+export default async function initiateConnection() {
 	try {
-		let db: MongoClient;
-		MongoClient.connect(
-			process.env.MONGO_URI,
-			{
-				useNewUrlParser: true,
-				useUnifiedTopology: true,
-			},
-			(err, client) => {
-				if (err) console.log(err);
-				db = client;
-				console.log('✅ | Connected to the database!');
-			}
-		);
-		return db;
+		const con = await MongoClient.connect(process.env.MONGO_URI, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+		});
+		return con;
 	} catch (error) {
 		console.log(error);
 	}

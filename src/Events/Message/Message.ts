@@ -1,6 +1,7 @@
 import BaseEvent from '../../Utils/Structures/BaseEvent';
 import DiscordClient from '../../Client/Client';
 import { Message } from 'discord.js';
+import StateManager from '../../Utils/StateManager';
 
 export default class MessageEvent extends BaseEvent {
 	constructor() {
@@ -9,9 +10,9 @@ export default class MessageEvent extends BaseEvent {
 	async run(client: DiscordClient, message: Message) {
 		if (message.author.bot) return;
 
-		console.log(this.db);
+		const mClient = (await StateManager.con).db();
 
-		const result = await this.db.collection('guilds');
+		const result = await mClient.collection('guilds');
 		const test = await result.findOne({ guildId: message.guild.id });
 
 		console.log(result);
