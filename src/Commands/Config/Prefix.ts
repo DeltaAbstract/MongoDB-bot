@@ -5,9 +5,11 @@ import GuildSchema from '../../Utils/Structures/Schemas/GuildSchema';
 
 export default class PreifixCommand extends BaseCommand {
 	constructor() {
-		super('preifx', 'config', []);
+		super('prefix', 'config', []);
 	}
 	async run(client: DiscordClient, message: Message, args: string[]) {
+		console.log('this is working');
+
 		const newPrefix = args[0];
 
 		console.log(newPrefix);

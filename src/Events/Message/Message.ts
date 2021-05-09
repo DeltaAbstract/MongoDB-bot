@@ -14,7 +14,7 @@ export default class MessageEvent extends BaseEvent {
 			guildId: message.guild.id,
 		});
 
-		const prefix = result?.prefix || '?';
+		const prefix: string = result?.prefix || '?';
 
 		console.log(prefix);
 
@@ -23,7 +23,6 @@ export default class MessageEvent extends BaseEvent {
 				.slice(prefix.length)
 				.trim()
 				.split(/\s+/);
-
 			const command =
 				client.commands.get(cmdName.toLowerCase()) ||
 				client.commands.get(client.aliases.get(cmdName.toLowerCase()));

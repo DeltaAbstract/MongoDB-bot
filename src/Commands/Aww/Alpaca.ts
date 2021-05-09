@@ -6,5 +6,7 @@ export default class AlpacaCommand extends BaseCommand {
 	constructor() {
 		super('alpaca', 'aww', []);
 	}
-	async run(client: DiscordClient, message: Message, args: string[]) {}
+	async run(client: DiscordClient, message: Message, args: string[]) {
+		console.log('This is working!');
+	}
 }
