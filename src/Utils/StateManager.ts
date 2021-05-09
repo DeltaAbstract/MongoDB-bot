@@ -9,6 +9,8 @@ class StateManager extends EventEmitter {
 		connection()
 			.then((client) => {
 				this.db = client.db();
+				console.log(this.db);
+				console.log(client);
 			})
 			.catch((err: Error) => {
 				console.log(err);
