@@ -10,7 +10,6 @@ class StateManager extends EventEmitter {
 			.then((client) => {
 				this.db = client.db();
 				console.log(this.db);
-				console.log(client);
 			})
 			.catch((err: Error) => {
 				console.log(err);
@@ -18,4 +17,4 @@ class StateManager extends EventEmitter {
 	}
 }
 
-export default new StateManager();
+export = new StateManager();
