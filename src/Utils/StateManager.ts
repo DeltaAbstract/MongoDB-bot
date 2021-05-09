@@ -6,7 +6,8 @@ class StateManager extends EventEmitter {
 	db: Db;
 	constructor(opts?: object) {
 		super(opts);
-		this.db = connection().db();
+		const MongoClient = connection();
+		this.db = MongoClient.db();
 	}
 }
 
