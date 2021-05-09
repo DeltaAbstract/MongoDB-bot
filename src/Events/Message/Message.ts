@@ -28,7 +28,10 @@ export default class MessageEvent extends BaseEvent {
 				client.commands.get(cmdName.toLowerCase()) ||
 				client.commands.get(client.aliases.get(cmdName.toLowerCase()));
 
+			console.log(client.commands);
+
 			if (command) {
+				console.log(command);
 				command.run(client, message, cmdArgs);
 			}
 		}

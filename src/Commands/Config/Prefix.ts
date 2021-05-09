@@ -10,6 +10,8 @@ export default class PreifixCommand extends BaseCommand {
 	async run(client: DiscordClient, message: Message, args: string[]) {
 		const newPrefix = args[0];
 
+		console.log(newPrefix);
+
 		if (message.author.id != message.guild.ownerID)
 			return message.channel.send('You are not the owner!');
 
