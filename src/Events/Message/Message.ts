@@ -13,7 +13,8 @@ export default class MessageEvent extends BaseEvent {
 		const result: any = await GuildSchema.findOne({
 			guildId: message.guild.id,
 		});
-		const prefix = result.prefix || '?';
+
+		const prefix = result.prefix ?? '?';
 
 		console.log(prefix);
 	}
