@@ -1,7 +1,6 @@
 import BaseEvent from '../../Utils/Structures/BaseEvent';
 import DiscordClient from '../../Client/Client';
 import { Message } from 'discord.js';
-import initiateConnection from '../../../Database/DB';
 
 export default class MessageEvent extends BaseEvent {
 	constructor() {
@@ -10,9 +9,13 @@ export default class MessageEvent extends BaseEvent {
 	async run(client: DiscordClient, message: Message) {
 		if (message.author.bot) return;
 
-		const prefix: string = '?';
+		const result = await this.db.collection('guilds');
+		const test = await result.findOne({ guildId: message.guild.id });
 
-		console.log(prefix);
+		console.log(result);
+		console.log(test);
+
+		const prefix: string = '?';
 
 		if (message.content.startsWith(prefix)) {
 			const [cmdName, ...cmdArgs] = message.content

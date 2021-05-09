@@ -1,7 +1,6 @@
 import DiscordClient from './Client/Client';
 import * as dotenv from 'dotenv';
 import { registerCommands, registerEvents } from './Utils/Register';
-import { MongoClient } from 'mongodb';
 
 dotenv.config();
 

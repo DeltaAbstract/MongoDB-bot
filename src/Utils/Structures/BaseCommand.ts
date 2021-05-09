@@ -1,7 +1,10 @@
 import { Message } from 'discord.js';
 import DiscordClient from '../../Client/Client';
+import StateManger from '../StateManager';
 
 export default abstract class BaseCommand {
+	// Misc
+	db = StateManger.db;
 	constructor(
 		private name: string,
 		private category: string,
