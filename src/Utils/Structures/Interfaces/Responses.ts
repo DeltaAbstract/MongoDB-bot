@@ -1,0 +1,3 @@
+namespace Responses {}
+
+export = Responses;

@@ -1,0 +1,3 @@
+namespace Functions {}
+
+export = Functions;

@@ -1,0 +1,3 @@
+namespace API {}
+
+export = API;
