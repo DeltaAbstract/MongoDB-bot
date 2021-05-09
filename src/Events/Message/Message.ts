@@ -14,7 +14,7 @@ export default class MessageEvent extends BaseEvent {
 			guildId: message.guild.id,
 		});
 
-		const prefix = result.prefix ?? '?';
+		const prefix = result?.prefix || '?';
 
 		console.log(prefix);
 	}
