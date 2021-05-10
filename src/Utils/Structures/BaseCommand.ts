@@ -4,7 +4,7 @@ import { Db } from 'mongodb';
 
 export default abstract class BaseCommand {
 	// Misc
-	db: Db;
+	con: Db;
 	constructor(
 		private name: string,
 		private category: string,
@@ -22,7 +22,7 @@ export default abstract class BaseCommand {
 		private cooldown?: number,
 		private status?: 'working' | 'debug' | 'WIP'
 	) {
-		this.db = globalThis.db as Db;
+		this.con = globalThis.db as Db;
 	}
 
 	getName(): string {

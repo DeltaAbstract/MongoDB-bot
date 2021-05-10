@@ -10,6 +10,7 @@ export default class MessageEvent extends BaseEvent {
 		if (message.author.bot) return;
 
 		const result = await this.con.collection('guilds');
+
 		const guild = await result.findOne({ guildId: message.guild.id });
 
 		const prefix: string = guild.prefix || '?';
