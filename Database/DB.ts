@@ -1,10 +1,16 @@
 import { MongoClient, Db } from 'mongodb';
 
-export default function initConnection() {
-	const client = new MongoClient(process.env.MONGO_URI);
-	let con: Db;
-	client.connect().then((connection) => {
-		con = connection.db();
-	});
-	return con;
+export default class DB {
+	con: Db;
+	constructor() {
+		const client = new MongoClient(process.env.MONGO_URI, {
+			useUnifiedTopology: true,
+			useNewUrlParser: true,
+		});
+		client.connect((err, client) => {
+			if (err) return console.log(err);
+			console.log('Connected to the DB!');
+			this.con = client.db();
+		});
+	}
 }

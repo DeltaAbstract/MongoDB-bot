@@ -6,7 +6,7 @@ class StateManager extends EventEmitter {
 	con: Db;
 	constructor(options?: object) {
 		super(options);
-		this.con = connection();
+		this.con = new connection().con;
 	}
 }
 
