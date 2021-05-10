@@ -10,11 +10,9 @@ export default class MessageEvent extends BaseEvent {
 		if (message.author.bot) return;
 
 		const result = await this.con.collection('guilds');
-		const test = await result.findOne({ guildId: message.guild.id });
+		const guild = await result.findOne({ guildId: message.guild.id });
 
-		console.log(test);
-
-		const prefix: string = '?';
+		const prefix: string = guild.prefix || '?';
 
 		if (message.content.startsWith(prefix)) {
 			const [cmdName, ...cmdArgs] = message.content
