@@ -7,7 +7,10 @@ dotenv.config();
 
 const client = new DiscordClient({});
 
-const mongo = new MongoClient(process.env.MONGO_URI);
+const mongo = new MongoClient(process.env.MONGO_URI, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+});
 mongo.connect((err, con) => {
 	if (err) console.log(err);
 	globalThis.db = con.db() as Db;

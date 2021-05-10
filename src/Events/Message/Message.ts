@@ -1,7 +1,6 @@
 import BaseEvent from '../../Utils/Structures/BaseEvent';
 import DiscordClient from '../../Client/Client';
 import { Message } from 'discord.js';
-import StateManager from '../../Utils/StateManager';
 
 export default class MessageEvent extends BaseEvent {
 	constructor() {
