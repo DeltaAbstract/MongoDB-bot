@@ -1,10 +1,10 @@
 import { Message } from 'discord.js';
 import DiscordClient from '../../Client/Client';
-import StateManager from '../StateManager';
+import { Db } from 'mongodb';
 
 export default abstract class BaseCommand {
 	// Misc
-	db = StateManager.con;
+	db: Db;
 	constructor(
 		private name: string,
 		private category: string,
@@ -21,7 +21,9 @@ export default abstract class BaseCommand {
 		private nsfw?: boolean | string,
 		private cooldown?: number,
 		private status?: 'working' | 'debug' | 'WIP'
-	) {}
+	) {
+		this.db = globalThis.db as Db;
+	}
 
 	getName(): string {
 		return this.name;

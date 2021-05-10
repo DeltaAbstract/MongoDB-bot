@@ -1,12 +1,11 @@
 import DiscordClient from '../../Client/Client';
-import StateManager from '../StateManager';
 import { Db } from 'mongodb';
 
 export default abstract class BaseEvent {
 	// Misc props
 	con: Db;
 	constructor(private name: string) {
-		this.con = StateManager.con;
+		this.con = globalThis.db as Db;
 	}
 
 	getName(): string {

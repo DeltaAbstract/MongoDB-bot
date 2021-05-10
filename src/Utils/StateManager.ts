@@ -3,10 +3,9 @@ import { EventEmitter } from 'events';
 import { Db, MongoClient } from 'mongodb';
 
 class StateManager extends EventEmitter {
-	con: Db;
+	db: any;
 	constructor(options?: object) {
 		super(options);
-		this.con = new connection().con;
 	}
 }
 
