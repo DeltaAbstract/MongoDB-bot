@@ -10,12 +10,9 @@ export default class MessageEvent extends BaseEvent {
 	async run(client: DiscordClient, message: Message) {
 		if (message.author.bot) return;
 
-		const mClient = (await StateManager.con).db();
-
-		const result = await mClient.collection('guilds');
+		const result = await this.con.collection('guilds');
 		const test = await result.findOne({ guildId: message.guild.id });
 
-		console.log(result);
 		console.log(test);
 
 		const prefix: string = '?';

@@ -4,6 +4,7 @@ import StateManager from '../StateManager';
 
 export default abstract class BaseCommand {
 	// Misc
+	db = StateManager.con;
 	constructor(
 		private name: string,
 		private category: string,

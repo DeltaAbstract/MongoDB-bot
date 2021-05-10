@@ -3,7 +3,7 @@ import { EventEmitter } from 'events';
 import { Db, MongoClient } from 'mongodb';
 
 class StateManager extends EventEmitter {
-	con: Promise<MongoClient>;
+	con: Db;
 	constructor(options?: object) {
 		super(options);
 		this.con = connection();
