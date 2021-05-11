@@ -1,6 +1,8 @@
 import BaseEvent from '../../Utils/Structures/BaseEvent';
 import DiscordClient from '../../Client/Client';
 import { Message } from 'discord.js';
+import Schemas from '../../Utils/Structures/Schemas/Schemas';
+import { Collection } from 'mongodb';
 
 export default class MessageEvent extends BaseEvent {
 	constructor() {
@@ -9,11 +11,13 @@ export default class MessageEvent extends BaseEvent {
 	async run(client: DiscordClient, message: Message) {
 		if (message.author.bot) return;
 
-		const result = await this.con.collection('guilds');
+		const result: Collection<Schemas.Guild> = await this.con.collection(
+			'guilds'
+		);
 
 		const guild = await result.findOne({ guildId: message.guild.id });
 
-		const prefix: string = guild.prefix || '?';
+		const prefix: string = guild.prefix;
 
 		if (message.content.startsWith(prefix)) {
 			const [cmdName, ...cmdArgs] = message.content

@@ -6,6 +6,7 @@ export default class DiscordClient extends Client {
 	private _commands = new Collection<string, BaseCommand>();
 	private _events = new Collection<string, BaseEvent>();
 	private _aliases = new Collection<string, string>();
+	//private _database = new Collection<Snowflake>()
 	private _version = '0.1';
 	private _updated_at = 'Sunday May 09, 2021';
 	constructor(options?: ClientOptions) {

@@ -18,9 +18,8 @@ export default class PrefixCommand extends BaseCommand {
 		try {
 			const coll = await this.con.collection('guilds');
 			await coll.findOneAndUpdate(
-				{ id: message.guild.id },
-				{ id: message.guild.id, prefix: newPrefix },
-				{ upsert: true }
+				{ guildId: message.guild.id },
+				{ guildId: message.guild.id, prefix: newPrefix }
 			);
 
 			return await message.channel.send(
