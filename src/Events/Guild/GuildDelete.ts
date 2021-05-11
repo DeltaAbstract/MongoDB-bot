@@ -14,11 +14,11 @@ export default class GuildDeleteEvent extends BaseEvent {
 			const GuildWelcome = await this.con.collection('welcomesystem');
 			const GuildLeave = await this.con.collection('leavesystem');
 
-			await GuildCollection.deleteOne({ id: guild.id });
-			await GuildLogging.deleteOne({ id: guild.id });
-			await GuildRoles.deleteOne({ id: guild.id });
-			await GuildWelcome.deleteOne({ id: guild.id });
-			await GuildLeave.deleteOne({ id: guild.id });
+			await GuildCollection.deleteOne({ guildId: guild.id });
+			await GuildLogging.deleteOne({ guildId: guild.id });
+			await GuildRoles.deleteOne({ guildId: guild.id });
+			await GuildWelcome.deleteOne({ guildId: guild.id });
+			await GuildLeave.deleteOne({ guildId: guild.id });
 		} catch (error) {
 			console.log(error);
 		}
