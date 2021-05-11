@@ -41,8 +41,9 @@ namespace Schemas {
 		inviteLogId: Snowflake | null;
 		emojiLogId: Snowflake | null;
 		channelLogId: Snowflake | null;
-		constructor(id: Snowflake, opts: GuildLoggingOpts) {
+		constructor(id: Snowflake, opts?: GuildLoggingOpts) {
 			this.guildId = id;
+			if (!opts) opts = {};
 			this.modLogId = opts.modLogId ? opts.modLogId : null;
 			this.memberLogId = opts.memberLogId ? opts.memberLogId : null;
 			this.publicModLogId = opts.publicModLogId ? opts.publicModLogId : null;
@@ -102,6 +103,87 @@ namespace Schemas {
 				: Date.now();
 			this.lastUpdated = opts.lastUpdated ? opts.lastUpdated : Date.now();
 			this.updatedBy = opts.updatedBy ? opts.updatedBy : null;
+		}
+	}
+	export class BlacklistedUser {
+		userId: Snowflake;
+		reason: string | null;
+		constructor(id: Snowflake, reason?: string) {
+			if (!reason) reason = null;
+
+			this.userId = id;
+			this.reason = reason;
+		}
+	}
+	export class ServerRoles {
+		guildId: Snowflake;
+		muteRoleId: Snowflake | null;
+		adminRoleId: Snowflake | null;
+		modRoleId: Snowflake | null;
+		constructor(
+			id: Snowflake,
+			adminrole?: Snowflake,
+			muterole?: Snowflake,
+			modrole?: Snowflake
+		) {
+			if (!adminrole) adminrole = null;
+			if (!muterole) muterole = null;
+			if (!modrole) modrole = null;
+
+			this.guildId = id;
+			this.adminRoleId = adminrole;
+			this.muteRoleId = muterole;
+			this.modRoleId = modrole;
+		}
+	}
+	export class WelcomeSystem {
+		guildId: Snowflake;
+		isEnabled: boolean;
+		media: 'text' | 'image' | null;
+		welcomeMessage: string | null;
+		welcomeChannelId: Snowflake | null;
+		constructor(
+			id: Snowflake,
+			isEnabled?: boolean,
+			media?: 'text' | 'image',
+			welcomeMessage?: string,
+			welcomeChannelId?: Snowflake
+		) {
+			if (!isEnabled) isEnabled = false;
+			if (!media) media = null;
+			if (!welcomeMessage) welcomeMessage = null;
+			if (!welcomeChannelId) welcomeChannelId = null;
+
+			this.guildId = id;
+			this.isEnabled = isEnabled;
+			this.media = media;
+			this.welcomeMessage = welcomeMessage;
+			this.welcomeChannelId = welcomeChannelId;
+		}
+	}
+	export class LeaveSystem {
+		guildId: Snowflake;
+		isEnabled: boolean;
+		media: 'text' | 'image' | null;
+		leaveMessage: string | null;
+		leaveChannelId: Snowflake | null;
+		constructor(
+			id: Snowflake,
+			isEnabled?: boolean,
+			media?: 'text' | 'image',
+			leaveMessage?: string,
+			leaveChannelId?: Snowflake
+		) {
+			if (!isEnabled) isEnabled = false;
+			if (!media) media = null;
+			if (!leaveMessage) leaveMessage = null;
+			if (!leaveChannelId) leaveChannelId = null;
+
+			this.guildId = id;
+			this.isEnabled = isEnabled;
+			this.media = media;
+			this.leaveMessage = leaveMessage;
+			this.leaveChannelId = leaveChannelId;
 		}
 	}
 }
