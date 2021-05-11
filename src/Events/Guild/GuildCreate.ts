@@ -9,7 +9,6 @@ export default class GuildCreateEvent extends BaseEvent {
 	}
 	async run(client: DiscordClient, guild: Guild) {
 		try {
-			console.log(this.con);
 			const GuildCollection = await this.con.collection('guilds');
 			const GuildLogging = await this.con.collection('guildlogging');
 			const GuildRoles = await this.con.collection('serverroles');

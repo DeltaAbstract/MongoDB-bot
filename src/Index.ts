@@ -14,6 +14,7 @@ const mongo = new MongoClient(process.env.MONGO_URI, {
 mongo.connect((err, con) => {
 	if (err) console.log(err);
 	globalThis.db = con.db() as Db;
+	console.log('✅ | Successfully logged into the database');
 });
 
 globalThis.client = client;
