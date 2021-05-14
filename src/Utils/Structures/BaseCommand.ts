@@ -3,6 +3,8 @@ import DiscordClient from '../../Client/Client';
 import { Db } from 'mongodb';
 
 export default abstract class BaseCommand {
+	// API here
+	// Functions here
 	// Misc
 	con: Db;
 	constructor(

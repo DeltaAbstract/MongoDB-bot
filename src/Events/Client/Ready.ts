@@ -1,5 +1,6 @@
 import BaseEvent from '../../Utils/Structures/BaseEvent';
 import DiscordClient from '../../Client/Client';
+import CachedGuild from '../../Utils/Structures/CachedGuild';
 
 export default class ReadyEvent extends BaseEvent {
 	constructor() {
@@ -14,5 +15,10 @@ export default class ReadyEvent extends BaseEvent {
 			activity: { name: status, type: 'WATCHING' },
 			status: 'dnd',
 		});
+
+		for (const g of client.guilds.cache) {
+			const self = this;
+			const guildId = g[1].id;
+		}
 	}
 }

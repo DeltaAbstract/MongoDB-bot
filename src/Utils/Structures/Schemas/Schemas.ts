@@ -186,6 +186,230 @@ namespace Schemas {
 			this.leaveChannelId = leaveChannelId;
 		}
 	}
+	export class RolePersist {
+		guildId: Snowflake;
+		roleId: Snowflake;
+		userId: Snowflake;
+		reason?: string;
+		constructor(
+			id: Snowflake,
+			role: Snowflake,
+			user: Snowflake,
+			reason?: string
+		) {
+			if (!reason) reason = 'No reason given.';
+
+			this.guildId = id;
+			this.roleId = role;
+			this.userId = user;
+			this.reason = reason;
+		}
+	}
+	export class Afk {
+		guildId: Snowflake;
+		userId: Snowflake;
+		afkMessage: string;
+		afkAt?: number;
+		constructor(
+			id: Snowflake,
+			user: Snowflake,
+			afkMessage?: string,
+			time?: number
+		) {
+			if (!afkMessage) afkMessage = 'No message given';
+			if (!time) time = Date.now();
+
+			this.guildId = id;
+			this.userId = user;
+			this.afkMessage = afkMessage;
+			this.afkAt = time;
+		}
+	}
+	export class Tags {
+		guildId: Snowflake;
+		tagName: string;
+		tagContent: string;
+		constructor(id: Snowflake, name: string, content: string) {
+			this.guildId = id;
+			this.tagName = name;
+			this.tagContent = content;
+		}
+	}
+	export class Protected {
+		guildId: Snowflake;
+		roles: Snowflake[];
+		users: Snowflake[];
+		constructor(id: Snowflake) {
+			this.guildId = id;
+			this.roles = [];
+			this.users = [];
+		}
+	}
+	export class Reminders {
+		guildId: Snowflake;
+		reminderTime: number;
+		reminder: string;
+		constructor(id: Snowflake, time: number, reminder: string) {
+			this.guildId = id;
+			this.reminderTime = time;
+			this.reminder = reminder;
+		}
+	}
+	export class Economy {
+		guildId: Snowflake;
+		isEnabled: boolean;
+		currency: string;
+		startBalance: number;
+		auditLog: Snowflake | null;
+		maxBalanace: number;
+		totalBank: number;
+		totalCash: number;
+		totalNetWorth: number;
+		constructor(
+			id: Snowflake,
+			isEnabled?: boolean,
+			currency?: string,
+			startBalance?: number,
+			auditlog?: Snowflake,
+			maxBalance?: number
+		) {
+			this.guildId = id;
+			this.isEnabled = isEnabled ? isEnabled : false;
+			this.currency = currency ? currency : '💴';
+			this.startBalance = startBalance ? startBalance : 0;
+			this.auditLog = auditlog ? auditlog : null;
+			this.maxBalanace = maxBalance ? maxBalance : null;
+		}
+	}
+	export class ChatMoney {
+		guildId: Snowflake;
+		isEnabled: boolean;
+		minAmount: number;
+		maxAmount: number;
+		constructor(
+			id: Snowflake,
+			isEnabled?: boolean,
+			min?: number,
+			max?: number
+		) {
+			if (!isEnabled) isEnabled = false;
+			if (!min) min = 1;
+			if (!max) max = 9;
+			this.guildId = id;
+			this.isEnabled = isEnabled;
+			this.minAmount = min;
+			this.maxAmount = max;
+		}
+	}
+	export class GuildMemberEconomy {
+		guildId: Snowflake;
+		userId: Snowflake;
+		claimedDaily: boolean;
+		claimedWeekly: boolean;
+		claimedYearly: boolean;
+		balance: number;
+		constructor(
+			guild: Snowflake,
+			user: Snowflake,
+			daily?: boolean,
+			weekly?: boolean,
+			yearly?: boolean,
+			balance?: number
+		) {
+			if (!daily) daily = false;
+			if (!weekly) weekly = false;
+			if (!yearly) yearly = false;
+			if (!balance) balance = 0;
+
+			this.guildId = guild;
+			this.userId = user;
+			this.claimedDaily = daily;
+			this.claimedWeekly = weekly;
+			this.claimedYearly = yearly;
+			this.balance = balance;
+		}
+	}
+	export class XP {
+		guildId: Snowflake;
+		isEnabled: boolean;
+		maxAmount: number;
+		minAmount: number;
+		constructor(id: Snowflake, enabled?: boolean, max?: number, min?: 1) {
+			if (!enabled) enabled = false;
+			if (!max) max = 5;
+			if (!min) min = 1;
+			this.guildId = id;
+			this.isEnabled = enabled;
+			this.maxAmount = max;
+			this.minAmount = min;
+		}
+	}
+	export class GuildMemberExperience {
+		guildId: Snowflake;
+		userId: Snowflake;
+		currentLevel: number;
+		experiencePoints: number;
+		constructor(
+			guild: Snowflake,
+			user: Snowflake,
+			level?: number,
+			points?: number
+		) {
+			if (!level) level = 0;
+			if (!points) points = 0;
+			this.guildId = guild;
+			this.userId = user;
+			this.currentLevel = level;
+			this.experiencePoints = points;
+		}
+	}
+	export class GuildSettings {
+		guildId: Snowflake;
+		disabledCommands: string[];
+		disabledCategories: string[];
+		blacklistedUsers: Snowflake[];
+		blacklistedChannels: Snowflake[];
+		blacklistedRoles: Snowflake[];
+		constructor(
+			id: Snowflake,
+			commands?: string[],
+			categories?: string[],
+			users?: Snowflake[],
+			channels?: Snowflake[],
+			roles?: Snowflake[]
+		) {
+			if (!commands) commands = [];
+			if (!categories) categories = [];
+			if (!users) users = [];
+			if (!channels) channels = [];
+			if (!roles) roles = [];
+
+			this.guildId = id;
+			this.disabledCommands = commands;
+			this.disabledCategories = categories;
+			this.blacklistedUsers = users;
+			this.blacklistedChannels = channels;
+			this.blacklistedRoles = roles;
+		}
+	}
+	export class BotStats {
+		commandsUsed: number;
+		messagesSent: number;
+		constructor() {
+			this.commandsUsed = 0;
+			this.messagesSent = 0;
+		}
+	}
+	export class GuildBotStats {
+		guildId: Snowflake;
+		messagesSent: number;
+		commandsUsed: number;
+		constructor(id: Snowflake) {
+			this.guildId = id;
+			this.messagesSent = 0;
+			this.commandsUsed = 0;
+		}
+	}
 }
 
 export = Schemas;

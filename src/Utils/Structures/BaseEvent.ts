@@ -2,6 +2,8 @@ import DiscordClient from '../../Client/Client';
 import { Db } from 'mongodb';
 
 export default abstract class BaseEvent {
+	// API here
+	// Functions here
 	// Misc props
 	con: Db;
 	constructor(private name: string) {
