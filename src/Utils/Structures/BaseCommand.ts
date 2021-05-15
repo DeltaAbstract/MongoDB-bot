@@ -1,10 +1,13 @@
 import { Message } from 'discord.js';
 import DiscordClient from '../../Client/Client';
 import { Db } from 'mongodb';
+import Functions from '../Functions';
+import API from '../API';
 
 export default abstract class BaseCommand {
 	// API here
 	// Functions here
+	Translator = new Functions.Translator();
 	// Misc
 	con: Db;
 	constructor(

@@ -8,5 +8,6 @@ export default class AlpacaCommand extends BaseCommand {
 	}
 	async run(client: DiscordClient, message: Message, args: string[]) {
 		console.log('This is working!');
+		const lang = await this.Translator.Getlang(message.guild.id);
 	}
 }
